@@ -4,6 +4,8 @@ function FindProxyForURL(url, host) {
     if (
         dnsDomainIs(host, ".ru") ||
         shExpMatch(host, "*.ru") ||
+        dnsDomainIs(host, ".vk.com") ||
+        shExpMatch(host, "*.vk.com") ||
         isPlainHostName(host) ||
         shExpMatch(host, "localhost") ||
         shExpMatch(host, "127.*") ||
