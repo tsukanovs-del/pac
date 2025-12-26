@@ -1,6 +1,17 @@
 function FindProxyForURL(url, host) {
 
-    // ===== ПРОКСИ ТОЛЬКО ДЛЯ .ru =====
+    // локальные адреса — напрямую
+    if (
+        isPlainHostName(host) ||
+        shExpMatch(host, "localhost") ||
+        shExpMatch(host, "127.*") ||
+        shExpMatch(host, "10.*") ||
+        shExpMatch(host, "192.168.*")
+    ) {
+        return "DIRECT";
+    }
+
+    // прокси ТОЛЬКО для .ru
     if (
         dnsDomainIs(host, ".ru") ||
         shExpMatch(host, "*.ru")
@@ -8,6 +19,5 @@ function FindProxyForURL(url, host) {
         return "PROXY 147.45.242.78:32101";
     }
 
-    // ===== ВСЁ ОСТАЛЬНОЕ НАПРЯМУЮ =====
     return "DIRECT";
 }
