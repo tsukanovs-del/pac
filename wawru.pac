@@ -14,7 +14,9 @@ function FindProxyForURL(url, host) {
     // прокси ТОЛЬКО для .ru
     if (
         dnsDomainIs(host, ".ru") ||
-        shExpMatch(host, "*.ru")
+        shExpMatch(host, "*.ru") ||
+        dnsDomainIs(host, ".vk.com") ||
+        shExpMatch(host, "*.vk.com")
     ) {
         return "PROXY 147.45.242.78:32101";
     }
